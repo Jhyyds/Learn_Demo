@@ -10,16 +10,16 @@ typedef struct{
     ElemType *R;
     int length;
 }SqList;
-class Quicksort{                       //¿ìËÙÅÅĞòÀà
+class Quicksort{                       //å¿«é€Ÿæ’åºç±»
 
 public:
 int Partition(SqList &L, int low, int high)
 {
     L.R[0] = L.R[low];
-    int pivotkey = L.R[low].key;                             //ÊàÖáµÄÖµ
+    int pivotkey = L.R[low].key;                             //æ¢è½´çš„å€¼
     while(low < high)
     {
-        while(low < high && L.R[high].key >= pivotkey) high--;           //±éÀúµ±ÓÒ±ßÊı×ÖĞ¡ÓÚÊàÖáÖµÊ±,½«Æä·Å»Ø×ó±ßµÄ¿ÕÎ»ÖĞ
+        while(low < high && L.R[high].key >= pivotkey) high--;           //éå†å½“å³è¾¹æ•°å­—å°äºæ¢è½´å€¼æ—¶,å°†å…¶æ”¾å›å·¦è¾¹çš„ç©ºä½ä¸­
         L.R[low] = L.R[high];
         while(low < high && L.R[low].key <= pivotkey) low++;
         L.R[high] = L.R[low];
@@ -27,10 +27,10 @@ int Partition(SqList &L, int low, int high)
     L.R[low] = L.R[0];
     return low;  
 }
-void Qsort(SqList &L, int low, int high)                         //¿ìËÙÅÅĞò(µİ¹éË¼Ïë)
+void Qsort(SqList &L, int low, int high)                         //å¿«é€Ÿæ’åº(é€’å½’æ€æƒ³)
 {
-    int pivotloc;                           //ÊàÖáÎ»ÖÃ(ÏÂ±ê)
-    if(low < high)                          //Èç¹û×ó±ÈÓÒ´ó,ËµÃ÷Õâ¸öÁĞ±íÒÑ¾­·Ö¸îÍê³É
+    int pivotloc;                           //æ¢è½´ä½ç½®(ä¸‹æ ‡)
+    if(low < high)                          //å¦‚æœå·¦æ¯”å³å¤§,è¯´æ˜è¿™ä¸ªåˆ—è¡¨å·²ç»åˆ†å‰²å®Œæˆ
     {
         pivotloc = Partition(L,low,high);
         Qsort(L,low,pivotloc-1);
@@ -42,10 +42,10 @@ void Quick_sort(SqList &L)
     Qsort(L,1,L.length);
 }
 };
-void Bubble_sort(SqList &L)                //Ã°ÅİÅÅĞò
+void Bubble_sort(SqList &L)                //å†’æ³¡æ’åº
 {
     int i, j;
-    for(i = 1; i < L.length; i++)           //L.length¸öÔªËØ¾ÍÅªL.length-1ÌË
+    for(i = 1; i < L.length; i++)           //L.lengthä¸ªå…ƒç´ å°±å¼„L.length-1è¶Ÿ
     {
         for(j = 1; j <= L.length - i; j++)  //i+j=L.length
         {
@@ -63,21 +63,20 @@ void test()
     SqList T;
     int i;
     KeyType Key;
-    cout<<"ÊäÈëË³Ğò±íµÄ³¤¶È£º";
+    cout<<"è¾“å…¥é¡ºåºè¡¨çš„é•¿åº¦ï¼š";
     cin>>T.length;
-    cout<<"ÎªË³Ğò±í³õÊ¼»¯£º";
+    cout<<"ä¸ºé¡ºåºè¡¨åˆå§‹åŒ–ï¼š";
     T.R = new ElemType[T.length];
     for(i=1;i<=T.length;i++)
     {
         cin>>T.R[i].key;
     }
-    cout<<"³õÊ¼»¯ĞòÁĞ:";
+    cout<<"åˆå§‹åŒ–åºåˆ—:";
     for(i=1;i<=T.length;i++)
     {
         cout<<T.R[i].key<<" ";
     }
-    cout<<endl<<"ÅÅĞòºóµÄĞòÁĞ:";
-    //Bubble_sort(T);
+    cout<<endl<<"æ’åºåçš„åºåˆ—:";
     Quicksort Q;
     Q.Quick_sort(T);
     for(i=1;i<=T.length;i++)
