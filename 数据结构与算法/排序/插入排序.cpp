@@ -47,28 +47,6 @@ void Shell_sort(SqList &L,int *dt,int t)       //dt:ÔöÁ¿ĞòÁĞµÄÊı×é   t:Êı×éÔªËØ¸
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void test()
 {
     SqList T;

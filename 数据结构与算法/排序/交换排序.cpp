@@ -50,27 +50,6 @@ void Quick_sort(SqList &L, int low, int high)                         //©ЛкыеепР
         Quick_sort(L,pivotloc+1,high);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void test()
 {
     SqList T;
