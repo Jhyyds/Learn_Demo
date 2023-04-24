@@ -58,3 +58,56 @@ while(i<=j)
 }
 return result;
 }
+
+
+给定一个正整数 n，生成一个包含 1 到 n^2 所有元素，且元素按顺时针顺序螺旋排列的正方形矩阵。
+示例:
+输入: 3 输出: [ [ 1, 2, 3 ], [ 8, 9, 4 ], [ 7, 6, 5 ] ]
+
+螺旋数组
+int** generateMatrix(int n, int* returnSize, int** returnColumnSizes){
+    //初始化返回的结果数组的大小
+    *returnSize = n;
+    *returnColumnSizes = (int*)malloc(sizeof(int) * n);
+    //初始化返回结果数组ans
+    int** ans = (int**)malloc(sizeof(int*) * n);
+    int i;
+    for(i = 0; i < n; i++) {
+        ans[i] = (int*)malloc(sizeof(int) * n);
+        (*returnColumnSizes)[i] = n;
+    }
+    int startx = 0;
+    int starty = 0;
+    int count = 1;
+    int offset = 1;
+    int j;
+    int time =n/2;
+    while(time)
+    {
+        for(j = startx; j < n - offset; j++)
+        {
+            ans[startx][j] = count++;
+        }
+        for(i = starty; i < n - offset; i++)
+        {
+            ans[i][j] = count++;
+        }
+        for(;j > startx; j--)
+        {
+            ans[i][j] = count++;
+        }
+        for(;i > starty; i--)
+        {
+            ans[i][j] = count++;
+        }
+        startx++;
+        starty++;
+        offset++;
+        time--;
+    }
+    if(n%2 == 1)
+    {
+        ans[n/2][n/2] = count;
+    }
+    return ans;
+    }
